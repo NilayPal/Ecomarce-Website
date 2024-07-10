@@ -5,6 +5,7 @@ import PagenotFound from "./pages/PagenotFound";
 import Policy from "./pages/Policy";
 import Contact from "./pages/Contact";
 import Register from "./pages/Auth/Register";
+import Login from "./pages/Auth/Login";
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
     
     {/* Login and register */}
     <Route path="/register" element={<Register/>}/>
+    <Route path="/login" element={<Login/>}/>
 
     <Route/>
    </Routes>
