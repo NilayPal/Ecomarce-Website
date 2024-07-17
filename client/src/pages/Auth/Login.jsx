@@ -5,13 +5,15 @@ import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../../Styles/Register.css'
+import { useAuth } from "../../Context/Auth";
+
 
 const Login = () => {
 
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-  
+    const [auth, setAuth] =useAuth();
     const navigate = useNavigate();
    
 
@@ -25,6 +27,12 @@ const Login = () => {
           if (res && res.data.success) {
             alert('User Login succesfully')
            // toast.success(res.data.message);
+           setAuth({
+            ...auth,
+            user: res.data.user,
+            token: res.data.token,
+           });
+           localStorage.setItem('auth',JSON.stringify(res.data))
             navigate('/');
           } else {
             toast.error(res.data.message);
